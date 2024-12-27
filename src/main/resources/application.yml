@@ -1,0 +1,165 @@
+spring:
+  application:
+    name: Timely Greetings
+
+  datasource:
+    url: jdbc:h2:mem:customerdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+    hikari:
+      maximum-pool-size: 10      # Allow up to 10 concurrent connections
+      minimum-idle: 5            # Keep 5 idle connections ready
+      idle-timeout: 30000        # Remove idle connections after 30 seconds
+      max-lifetime: 1800000      # Maximum lifetime of a connection (30 minutes)
+      connection-timeout: 30000  # Wait up to 30 seconds for a connection
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+
+  sql:
+    init:
+      mode: always
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: quickinterviewprep@gmail.com
+    password: "jcpu swfb ueru afcg"  # Ensure the password is quoted if it contains spaces
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+birthday:
+  time_zones:
+    - "Etc/GMT+12"  # UTC-12
+    - "Pacific/Kwajalein"  # UTC-12
+    - "Pacific/Efate"  # UTC-11
+    - "Pacific/Apia"  # UTC-11
+    - "Pacific/Niue"  # UTC-11
+    - "Pacific/Pago_Pago"  # UTC-11
+    - "Etc/GMT+10"  # UTC-10
+    - "Pacific/Honolulu"  # UTC-10
+    - "Pacific/Johnston"  # UTC-10
+    - "Pacific/Rarotonga"  # UTC-10
+    - "Etc/GMT+9"  # UTC-9
+    - "America/Anchorage"  # UTC-9
+    - "America/Los_Angeles"  # UTC-8
+    - "America/Tijuana"  # UTC-8
+    - "America/Vancouver"  # UTC-8
+    - "Etc/GMT+8"  # UTC-8
+    - "America/Denver"  # UTC-7
+    - "America/Phoenix"  # UTC-7
+    - "Etc/GMT+7"  # UTC-7
+    - "America/Chicago"  # UTC-6
+    - "America/Mexico_City"  # UTC-6
+    - "America/Regina"  # UTC-6
+    - "Etc/GMT+6"  # UTC-6
+    - "America/New_York"  # UTC-5
+    - "America/Toronto"  # UTC-5
+    - "America/Houston"  # UTC-5
+    - "Etc/GMT+5"  # UTC-5
+    - "America/Bogota"  # UTC-4
+    - "America/Lima"  # UTC-4
+    - "America/Caracas"  # UTC-4
+    - "Etc/GMT+4"  # UTC-4
+    - "America/Argentina/Buenos_Aires"  # UTC-3
+    - "America/Sao_Paulo"  # UTC-3
+    - "America/Guyana"  # UTC-3
+    - "Etc/GMT+3"  # UTC-3
+    - "Atlantic/Bermuda"  # UTC-2
+    - "Etc/GMT+2"  # UTC-2
+    - "Atlantic/Azores"  # UTC-1
+    - "Atlantic/Cape_Verde"  # UTC-1
+    - "Etc/GMT+1"  # UTC-1
+    - "Etc/GMT"  # UTC+0
+    - "Europe/London"  # UTC+0
+    - "Europe/Dublin"  # UTC+0
+    - "Etc/GMT-1"  # UTC+1
+    - "Africa/Algiers"  # UTC+1
+    - "Europe/Paris"  # UTC+1
+    - "Europe/Zurich"  # UTC+1
+    - "Etc/GMT-2"  # UTC+2
+    - "Africa/Johannesburg"  # UTC+2
+    - "Europe/Belgrade"  # UTC+2
+    - "Africa/Cairo"  # UTC+2
+    - "Europe/Helsinki"  # UTC+2
+    - "Etc/GMT-3"  # UTC+3
+    - "Africa/Nairobi"  # UTC+3
+    - "Europe/Moscow"  # UTC+3
+    - "Asia/Istanbul"  # UTC+3
+    - "Etc/GMT-4"  # UTC+4
+    - "Asia/Dubai"  # UTC+4
+    - "Asia/Baku"  # UTC+4
+    - "Europe/Samara"  # UTC+4
+    - "Etc/GMT-5"  # UTC+5
+    - "Asia/Karachi"  # UTC+5
+    - "Asia/Tashkent"  # UTC+5
+    - "Asia/Kolkata"  # UTC+5:30
+    - "Asia/Colombo"  # UTC+5:30
+    - "Etc/GMT-6"  # UTC+6
+    - "Asia/Almaty"  # UTC+6
+    - "Asia/Dhaka"  # UTC+6
+    - "Asia/Bangkok"  # UTC+7
+    - "Asia/Jakarta"  # UTC+7
+    - "Asia/Kuala_Lumpur"  # UTC+8
+    - "Asia/Singapore"  # UTC+8
+    - "Australia/Perth"  # UTC+8
+    - "Etc/GMT-7"  # UTC+7
+    - "Asia/Manila"  # UTC+8
+    - "Asia/Ho_Chi_Minh"  # UTC+8
+    - "Asia/Shanghai"  # UTC+8
+    - "Australia/Sydney"  # UTC+10
+    - "Australia/Melbourne"  # UTC+10
+    - "Australia/Brisbane"  # UTC+10
+    - "Etc/GMT-8"  # UTC+9
+    - "Asia/Tokyo"  # UTC+9
+    - "Asia/Seoul"  # UTC+9
+    - "Australia/Darwin"  # UTC+9:30
+    - "Australia/Adelaide"  # UTC+9:30
+    - "Etc/GMT-9"  # UTC+10
+    - "Pacific/Port_Moresby"  # UTC+10
+    - "Etc/GMT-10"  # UTC+11
+    - "Pacific/Noumea"  # UTC+11
+    - "Pacific/Fiji"  # UTC+12
+    - "Etc/GMT-11"  # UTC+12
+    - "Pacific/Auckland"  # UTC+13
+    - "Pacific/Tongatapu"  # UTC+14
+  email-subject: Happy Birthday!
+  email-template: birthday-template.html
+  cron-job: "0 */15 * * * *" # Run every 10 minutes
+
+logging:
+  level:
+    root: INFO # Default level for everything
+    com.raju.medium.timely_greetings.scheduler.BirthdayScheduler: DEBUG # Enable DEBUG for BirthdayScheduler class for testing
+    com.raju.medium.timely_greetings.service.BirthdayEmailService: DEBUG # Enable DEBUG for the email service for testing
+    org.springframework: WARN # To reduce log noise from Spring framework, set it to WARN or ERROR
+
+scheduler:
+  pool-size: 10 # Reduced thread pool size for local development
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    enable:
+      hikari: true
+
+

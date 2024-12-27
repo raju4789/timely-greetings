@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .email-header {
+            text-align: center;
+            background-color: #ff6347;
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+        }
+        .email-body {
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .email-footer {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <div class="email-header">
+        <h2>Happy Birthday, <span th:text="${customerName}">Customer</span>!</h2>
+    </div>
+    <div class="email-body">
+        <p>Dear <span th:text="${customerName}">Customer</span>,</p>
+        <p>Wishing you a very Happy Birthday! May this year bring you health, joy, and success.</p>
+    </div>
+    <div class="email-footer">
+        <p>Best wishes,</p>
+        <p>Raju</p>
+    </div>
+</div>
+</body>
+</html>
