@@ -34,8 +34,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: quickinterviewprep@gmail.com
-    password: "jcpu swfb ueru afcg"  # Ensure the password is quoted if it contains spaces
+    username: {your email address}
+    password: {your password}  # Ensure the password is quoted if it contains spaces
     protocol: smtp
     properties:
       mail:
